@@ -1,0 +1,1 @@
+{"topN":"20","maxLifetime":"10m0s","search.queryStats.lastQueriesCount":20000,"search.queryStats.minQueryDuration":"1ms","topByCount":[],"topByAvgDuration":[],"topBySumDuration":[]}

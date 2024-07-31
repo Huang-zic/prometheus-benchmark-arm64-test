@@ -1,0 +1,4 @@
+-httpListenAddr=":8428"
+-promscrape.config="/config/scrape.yml"
+-promscrape.kubernetesSDCheckInterval="5s"
+-storageDataPath="/data"

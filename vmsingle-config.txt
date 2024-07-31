@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 5s
+scrape_configs:
+- job_name: pods
+  relabel_configs:
+  - action: keep
+    if: '{__meta_kubernetes_pod_container_port_name="metrics"}'
+  - regex: __meta_kubernetes_pod_label_(.+)
+    action: labelmap
+  - regex: pod_template_hash
+    action: labeldrop
+  - source_labels: [__meta_kubernetes_namespace]
+    target_label: namespace
+  - source_labels: [__meta_kubernetes_pod_name]
+    target_label: pod
+  - source_labels: [__meta_kubernetes_pod_container_name]
+    target_label: container
+  kubernetes_sd_configs:
+  - role: pod
+    kubeconfig_file: ""
+    namespaces:
+      own_namespace: true
+      names: []
+    selectors:
+    - role: pod
+      label: chart-name=my-bench-prometheus-benchmark
+      field: ""
